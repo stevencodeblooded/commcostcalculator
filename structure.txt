@@ -1,0 +1,11 @@
+contractor-calculator/
+├── css/
+│   ├── styles.css          # Main styles
+│   └── animations.css      # Animation styles
+├── js/
+│   ├── calculator.js       # Core calculation logic
+│   ├── ui-handlers.js      # UI interaction handlers
+│   └── chart.js            # Chart visualization logic
+├── images/                 # Icons and visual elements
+├── index.html              # Main HTML file
+└── README.md               # Documentation

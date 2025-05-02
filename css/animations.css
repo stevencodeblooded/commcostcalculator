@@ -1,0 +1,193 @@
+/* Animations for Contractor Communication Cost Calculator */
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Counter Animation */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Transitions */
+.step-content {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.step-content.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Cost Item Reveal Animation */
+.cost-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cost-item.animate {
+    animation: revealItem 0.5s forwards;
+}
+
+@keyframes revealItem {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Set sequential delays for cost items */
+.cost-item:nth-child(1).animate { animation-delay: 0.1s; }
+.cost-item:nth-child(2).animate { animation-delay: 0.2s; }
+.cost-item:nth-child(3).animate { animation-delay: 0.3s; }
+.cost-item:nth-child(4).animate { animation-delay: 0.4s; }
+.cost-item:nth-child(5).animate { animation-delay: 0.5s; }
+
+/* Metric Card Animation */
+.metric-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.metric-card.animate {
+    animation: revealItem 0.5s forwards;
+}
+
+.metric-card:nth-child(1).animate { animation-delay: 0.6s; }
+.metric-card:nth-child(2).animate { animation-delay: 0.7s; }
+.metric-card:nth-child(3).animate { animation-delay: 0.8s; }
+
+/* Pulse Animation for CTA Button */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    }
+}
+
+/* Value Change Animation */
+.value-change {
+    animation: highlightChange 1s ease;
+}
+
+@keyframes highlightChange {
+    0% { background-color: rgba(96, 165, 250, 0.3); }
+    100% { background-color: transparent; }
+}
+
+/* Total Cost Reveal Animation */
+.total-cost {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.total-cost.animate {
+    animation: revealTotal 0.8s forwards;
+}
+
+@keyframes revealTotal {
+    0% { opacity: 0; transform: scale(0.9); }
+    60% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Progress Bar Animation */
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.calculation-progress {
+    position: relative;
+}
+
+.calculation-progress p {
+    margin-top: 1rem;
+    color: var(--primary-dark);
+}
+
+/* Slide in/out transitions */
+.slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+.slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to { 
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+/* Savings Arrow Animation */
+.savings-arrow i {
+    animation: arrowPulse 2s infinite;
+}
+
+@keyframes arrowPulse {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+/* Money Burning Visual Effect for Cost Values */
+.cost-value.burning {
+    position: relative;
+    overflow: hidden;
+}
+
+.cost-value.burning::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--error-light), transparent);
+    animation: burn 2s infinite linear;
+}
+
+@keyframes burn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+}
+
+/* Tooltip animation */
+.tooltip .tooltiptext {
+    animation: tooltipFade 0.3s ease;
+}
+
+@keyframes tooltipFade {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}

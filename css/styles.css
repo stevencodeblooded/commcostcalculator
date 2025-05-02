@@ -1,0 +1,813 @@
+/* Main Styles for Contractor Communication Cost Calculator */
+
+:root {
+    /* Primary Colors */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #60a5fa;
+    
+    /* Secondary Colors */
+    --secondary-color: #16a34a;
+    --secondary-dark: #15803d;
+    --secondary-light: #4ade80;
+    
+    /* Alert/Error Colors */
+    --error-color: #dc2626;
+    --error-light: #ef4444;
+    
+    /* Neutral Colors */
+    --dark: #1e293b;
+    --medium-dark: #475569;
+    --medium: #64748b;
+    --medium-light: #94a3b8;
+    --light: #e2e8f0;
+    --lightest: #f8fafc;
+    
+    /* Costs Theme Colors */
+    --cost-payment: #ef4444;
+    --cost-dispute: #f97316;
+    --cost-time: #eab308;
+    --cost-opportunity: #8b5cf6;
+    --cost-stress: #ec4899;
+    
+    /* UI Properties */
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--lightest);
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: var(--medium-dark);
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--medium);
+    margin-bottom: 2rem;
+}
+
+/* Header & Footer */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light);
+}
+
+footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light);
+    text-align: center;
+    color: var(--medium);
+    font-size: 0.9rem;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    margin: 2rem 0;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: var(--light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-indicator {
+    height: 100%;
+    width: 33.33%;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease;
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--medium);
+    position: relative;
+}
+
+.step.active {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: var(--light);
+    border-radius: 50%;
+}
+
+.step.active::before {
+    background-color: var(--primary-color);
+}
+
+.step.completed::before {
+    background-color: var(--secondary-color);
+}
+
+/* Form Elements */
+.calculator-form {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+}
+
+.input-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--medium-dark);
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    height: 6px;
+    background-color: var(--light);
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: var(--primary-dark);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.2);
+}
+
+.value-display {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.calculated-value {
+    background-color: var(--light);
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--light);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    color: var(--dark);
+    background-color: white;
+    outline: none;
+    transition: var(--transition);
+}
+
+select:focus {
+    border-color: var(--primary-light);
+}
+
+.industry-average {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--medium);
+    font-style: italic;
+}
+
+/* Tooltips */
+.tooltip {
+    display: inline-block;
+    position: relative;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.tooltip i {
+    color: var(--medium);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: var(--dark);
+    color: white;
+    text-align: center;
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    font-weight: normal;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.next-button, .calculate-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.next-button:hover, .calculate-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.back-button {
+    background-color: var(--light);
+    color: var(--medium-dark);
+}
+
+.back-button:hover {
+    background-color: var(--medium-light);
+    color: var(--dark);
+}
+
+.recalculate-button {
+    background-color: var(--medium);
+    color: white;
+}
+
+.recalculate-button:hover {
+    background-color: var(--medium-dark);
+}
+
+/* Results Section */
+.calculation-animation {
+    text-align: center;
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.results-container {
+    display: none;
+}
+
+.total-cost {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.total-cost .cost-label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.total-cost .cost-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.revenue-percentage {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--medium-dark);
+    margin-bottom: 2rem;
+}
+
+.revenue-percentage span {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+/* Cost Breakdown */
+.cost-visualization {
+    margin-bottom: 2.5rem;
+}
+
+.chart-container {
+    height: 250px;
+    margin-bottom: 1.5rem;
+}
+
+.cost-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.cost-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.cost-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.cost-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.cost-icon i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.payment-icon {
+    background-color: var(--cost-payment);
+}
+
+.dispute-icon {
+    background-color: var(--cost-dispute);
+}
+
+.time-icon {
+    background-color: var(--cost-time);
+}
+
+.opportunity-icon {
+    background-color: var(--cost-opportunity);
+}
+
+.stress-icon {
+    background-color: var(--cost-stress);
+}
+
+.cost-details {
+    flex-grow: 1;
+}
+
+.cost-label {
+    font-size: 0.9rem;
+    color: var(--medium);
+    margin-bottom: 0.25rem;
+}
+
+.cost-value {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Comparison Metrics */
+.comparison-metrics {
+    margin-bottom: 2.5rem;
+}
+
+.metric-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.metric-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.metric-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--medium);
+}
+
+/* Savings Projection */
+.savings-projection {
+    margin-bottom: 2rem;
+}
+
+.savings-visualization {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.savings-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.current-cost {
+    background-color: var(--error-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+.savings-arrow {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--medium);
+}
+
+.reduced-cost {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+.savings-label {
+    text-align: center;
+    color: var(--medium-dark);
+}
+
+.savings-label span {
+    font-weight: 700;
+    color: var(--secondary-dark);
+}
+
+/* Disclaimer */
+.disclaimer {
+    background-color: var(--light);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.disclaimer p {
+    font-size: 0.85rem;
+    color: var(--medium);
+    text-align: center;
+}
+
+/* Call to Action */
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Additional styles for notifications and interactive elements */
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.notification i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Restore Prompt */
+.restore-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.restore-prompt.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.restore-message {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    width: 500px;
+    text-align: center;
+}
+
+.restore-message i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.restore-message p {
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    font-size: 1.1rem;
+}
+
+.restore-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.restore-yes {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.restore-yes:hover {
+    background-color: var(--primary-dark);
+}
+
+.restore-no {
+    background-color: var(--light);
+    color: var(--medium-dark);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.restore-no:hover {
+    background-color: var(--medium-light);
+}
+
+/* Highlighted cost item */
+.cost-item.highlighted {
+    box-shadow: 0 0 0 2px var(--primary-color);
+    transform: translateY(-4px);
+}
+
+/* Cost item title hover effect */
+.cost-item:hover .cost-label {
+    color: var(--primary-dark);
+}
+
+/* Adjust tooltip position */
+.tooltip .tooltiptext {
+    z-index: 10;
+}
+
+/* Add visual feedback for interactive elements */
+.chart-container {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-container::after {
+    content: "Click segments for details";
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: var(--medium);
+    opacity: 0.8;
+}
+
+/* Make inputs feel more interactive */
+input[type="range"]:focus,
+select:focus,
+button:focus {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* Improve visual hierarchy in results */
+.total-cost {
+    position: relative;
+    overflow: hidden;
+}
+
+.total-cost::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--cost-payment), 
+        var(--cost-dispute), 
+        var(--cost-time), 
+        var(--cost-opportunity), 
+        var(--cost-stress)
+    );
+}
+
+/* Enhance status indicators */
+.step.completed::before {
+    content: "✓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Mobile enhancements */
+@media (max-width: 768px) {
+    .notification {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .chart-container::after {
+        display: none;
+    }
+    
+    .cost-breakdown {
+        padding-top: 1rem;
+    }
+    
+    .savings-visualization {
+        padding: 1rem;
+    }
+}
