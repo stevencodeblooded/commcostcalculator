@@ -1,262 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contractor Communication Cost Calculator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Contractor Communication Cost Calculator</h1>
-            <p class="tagline">See how much poor communication is costing your construction business annually.</p>
-        </header>
+      <header>
+        <h1>Contractor Communication Cost Calculator</h1>
+        <p class="tagline">
+          See how much poor communication is costing your construction business
+          annually.
+        </p>
+      </header>
 
-        <main>
-            <div class="calculator-form">
-                <div class="progress-bar-container">
-                    <div class="progress-bar">
-                        <div class="progress-indicator"></div>
-                    </div>
-                    <div class="step-indicators">
-                        <div class="step active" data-step="1">Business Scale</div>
-                        <div class="step" data-step="2">Current Process</div>
-                        <div class="step" data-step="3">Results</div>
-                    </div>
-                </div>
-
-                <!-- Step 1: Business Scale -->
-                <section id="step1" class="step-content active">
-                    <h2>Business Scale Information</h2>
-                    
-                    <div class="input-group">
-                        <label for="annualRevenue">Annual Revenue ($)</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">Your company's total revenue for the past 12 months</span>
-                        </div>
-                        <input type="range" id="annualRevenue" min="100000" max="10000000" step="50000" value="500000">
-                        <div class="value-display">$<span id="annualRevenueValue">500,000</span></div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="projectsPerYear">Number of Projects Per Year</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">Total number of projects your company completes annually</span>
-                        </div>
-                        <select id="projectsPerYear">
-                            <option value="2">2</option>
-                            <option value="5">5</option>
-                            <option value="10" selected>10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label>Average Project Value</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">Automatically calculated from Annual Revenue ÷ Number of Projects</span>
-                        </div>
-                        <div class="calculated-value">$<span id="avgProjectValue">50,000</span></div>
-                    </div>
-                    
-                    <div class="navigation-buttons">
-                        <button id="step1Next" class="next-button">Continue <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </section>
-
-                <!-- Step 2: Current Process -->
-                <section id="step2" class="step-content">
-                    <h2>Current Communication Process</h2>
-                    
-                    <div class="input-group">
-                        <label for="paymentDelay">Average Payment Delay (days after completion)</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">How many days on average do you wait for final payment after project completion?</span>
-                        </div>
-                        <input type="range" id="paymentDelay" min="0" max="120" step="1" value="30">
-                        <div class="value-display"><span id="paymentDelayValue">30</span> days</div>
-                        <div class="industry-average">Industry Average: 83 days</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="disputesRate">Disputes per 10 Projects</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">How many projects result in significant disputes or misunderstandings?</span>
-                        </div>
-                        <select id="disputesRate">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3">3</option>
-                            <option value="5">5</option>
-                            <option value="7">7</option>
-                            <option value="10">10</option>
-                        </select>
-                        <div class="industry-average">Industry Average: 2.1 disputes per 10 projects</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="weeklyHours">Weekly Hours Spent on Documentation/Clarification</label>
-                        <div class="tooltip">
-                            <i class="fas fa-question-circle"></i>
-                            <span class="tooltiptext">Hours spent weekly explaining work, renegotiating scope, or documenting changes</span>
-                        </div>
-                        <input type="range" id="weeklyHours" min="0" max="20" step="1" value="5">
-                        <div class="value-display"><span id="weeklyHoursValue">5</span> hours</div>
-                        <div class="industry-average">Industry Average: 5.2 hours</div>
-                    </div>
-                    
-                    <div class="navigation-buttons">
-                        <button id="step2Back" class="back-button"><i class="fas fa-arrow-left"></i> Back</button>
-                        <button id="calculateButton" class="calculate-button">Calculate My Costs</button>
-                    </div>
-                </section>
-
-                <!-- Step 3: Results -->
-                <section id="step3" class="step-content">
-                    <div class="calculation-animation">
-                        <div class="calculation-progress">
-                            <div class="spinner"></div>
-                            <p>Calculating your annual costs...</p>
-                        </div>
-                    </div>
-                    
-                    <div class="results-container">
-                        <h2>Your Results</h2>
-                        
-                        <div class="total-cost">
-                            <div class="cost-label">TOTAL ANNUAL COST OF POOR COMMUNICATION:</div>
-                            <div class="cost-value">$<span id="totalCostValue">0</span></div>
-                        </div>
-                        
-                        <p class="revenue-percentage">This is equivalent to <span id="percentageValue">0</span>% of your annual revenue</p>
-                        
-                        <div class="cost-visualization">
-                            <h3>Cost Breakdown:</h3>
-                            <div class="chart-container">
-                                <canvas id="costBreakdownChart"></canvas>
-                            </div>
-                            <div class="cost-breakdown">
-                                <div class="cost-item">
-                                    <div class="cost-icon payment-icon"><i class="fas fa-calendar-times"></i></div>
-                                    <div class="cost-details">
-                                        <div class="cost-label">Payment Delays</div>
-                                        <div class="cost-value">$<span id="paymentDelayCost">0</span></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="cost-item">
-                                    <div class="cost-icon dispute-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                                    <div class="cost-details">
-                                        <div class="cost-label">Dispute Resolution</div>
-                                        <div class="cost-value">$<span id="disputeCost">0</span></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="cost-item">
-                                    <div class="cost-icon time-icon"><i class="fas fa-clock"></i></div>
-                                    <div class="cost-details">
-                                        <div class="cost-label">Time Waste</div>
-                                        <div class="cost-value">$<span id="timeCost">0</span></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="cost-item">
-                                    <div class="cost-icon opportunity-icon"><i class="fas fa-handshake-slash"></i></div>
-                                    <div class="cost-details">
-                                        <div class="cost-label">Lost Opportunities</div>
-                                        <div class="cost-value">$<span id="opportunityCost">0</span></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="cost-item">
-                                    <div class="cost-icon stress-icon"><i class="fas fa-brain"></i></div>
-                                    <div class="cost-details">
-                                        <div class="cost-label">Hidden Stress Cost</div>
-                                        <div class="cost-value">$<span id="stressCost">0</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comparison-metrics">
-                            <h3>What This Means For Your Business:</h3>
-                            <div class="metric-cards">
-                                <div class="metric-card">
-                                    <div class="metric-icon"><i class="fas fa-calendar-day"></i></div>
-                                    <div class="metric-value">$<span id="dailyCost">0</span></div>
-                                    <div class="metric-label">Daily Cost</div>
-                                </div>
-                                
-                                <div class="metric-card">
-                                    <div class="metric-icon"><i class="fas fa-project-diagram"></i></div>
-                                    <div class="metric-value">$<span id="projectCost">0</span></div>
-                                    <div class="metric-label">Per Project</div>
-                                </div>
-                                
-                                <div class="metric-card">
-                                    <div class="metric-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="metric-value">$<span id="fiveYearCost">0</span></div>
-                                    <div class="metric-label">5-Year Cost</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="savings-projection">
-                            <h3>Potential Annual Savings:</h3>
-                            <div class="savings-visualization">
-                                <div class="savings-bar">
-                                    <div class="current-cost">$<span id="currentCostDisplay">0</span></div>
-                                    <div class="savings-arrow">
-                                        <i class="fas fa-long-arrow-alt-right"></i>
-                                    </div>
-                                    <div class="reduced-cost">$<span id="reducedCostDisplay">0</span></div>
-                                </div>
-                                <div class="savings-label">
-                                    With the Progress Pulse system, clients typically reduce these costs by 82%, potentially saving you $<span id="potentialSavings">0</span> annually.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="disclaimer">
-                            <p>Results are estimates based on industry averages and your inputs. Individual results may vary based on project complexity and client relationships.</p>
-                        </div>
-                        
-                        <div class="cta-container">
-                            <a href="#apply" class="cta-button pulse-animation">APPLY FOR 1 OF 5 SPOTS NOW</a>
-                            <a href="#download" class="cta-secondary">DOWNLOAD YOUR CUSTOM REPORT</a>
-                        </div>
-                        
-                        <div class="navigation-buttons">
-                            <button id="step3Back" class="back-button"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button id="recalculateButton" class="recalculate-button">Recalculate</button>
-                        </div>
-                    </div>
-                </section>
+      <main>
+        <div class="calculator-form">
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div class="progress-indicator"></div>
             </div>
-        </main>
-        
-        <footer>
-            <p>© 2025 Progress Pulse. All rights reserved.</p>
-        </footer>
+            <div class="step-indicators">
+              <div class="step active" data-step="1">Business Scale</div>
+              <div class="step" data-step="2">Current Process</div>
+              <div class="step" data-step="3">Results</div>
+            </div>
+          </div>
+
+          <!-- Step 1: Business Scale -->
+          <section id="step1" class="step-content active">
+            <h2>Business Scale Information</h2>
+
+            <div class="input-group">
+              <label for="annualRevenue">Annual Revenue ($)</label>
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >Your company's total revenue for the past 12 months</span
+                >
+              </div>
+              <input
+                type="range"
+                id="annualRevenue"
+                min="100000"
+                max="10000000"
+                step="50000"
+                value="500000"
+              />
+              <div class="value-display">
+                $<span id="annualRevenueValue">500,000</span>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="projectsPerYear">Number of Projects Per Year</label>
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >Total number of projects your company completes
+                  annually</span
+                >
+              </div>
+              <select id="projectsPerYear">
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>Average Project Value</label>
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >Automatically calculated from Annual Revenue ÷ Number of
+                  Projects</span
+                >
+              </div>
+              <div class="calculated-value">
+                $<span id="avgProjectValue">50,000</span>
+              </div>
+            </div>
+
+            <div class="navigation-buttons">
+              <button id="step1Next" class="next-button">
+                Continue <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- Step 2: Current Process -->
+          <section id="step2" class="step-content">
+            <h2>Current Communication Process</h2>
+
+            <div class="input-group">
+              <label for="paymentDelay"
+                >Average Payment Delay (days after completion)</label
+              >
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >How many days on average do you wait for final payment after
+                  project completion?</span
+                >
+              </div>
+              <input
+                type="range"
+                id="paymentDelay"
+                min="0"
+                max="120"
+                step="1"
+                value="30"
+              />
+              <div class="value-display">
+                <span id="paymentDelayValue">30</span> days
+              </div>
+              <div class="industry-average">Industry Average: 83 days</div>
+            </div>
+
+            <div class="input-group">
+              <label for="disputesRate">Disputes per 10 Projects</label>
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >How many projects result in significant disputes or
+                  misunderstandings?</span
+                >
+              </div>
+              <select id="disputesRate">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="7">7</option>
+                <option value="10">10</option>
+              </select>
+              <div class="industry-average">
+                Industry Average: 2.1 disputes per 10 projects
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="weeklyHours"
+                >Weekly Hours Spent on Documentation/Clarification</label
+              >
+              <div class="tooltip">
+                <i class="fas fa-question-circle"></i>
+                <span class="tooltiptext"
+                  >Hours spent weekly explaining work, renegotiating scope, or
+                  documenting changes</span
+                >
+              </div>
+              <input
+                type="range"
+                id="weeklyHours"
+                min="0"
+                max="20"
+                step="1"
+                value="5"
+              />
+              <div class="value-display">
+                <span id="weeklyHoursValue">5</span> hours
+              </div>
+              <div class="industry-average">Industry Average: 5.2 hours</div>
+            </div>
+
+            <div class="navigation-buttons">
+              <button id="step2Back" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button id="calculateButton" class="calculate-button">
+                Calculate My Costs
+              </button>
+            </div>
+          </section>
+
+          <!-- Step 3: Results -->
+          <section id="step3" class="step-content">
+            <div class="calculation-animation">
+              <div class="calculation-progress">
+                <div class="spinner"></div>
+                <p>Calculating your annual costs...</p>
+              </div>
+            </div>
+
+            <div class="results-container">
+              <h2>Your Results</h2>
+
+              <div class="total-cost">
+                <div class="cost-label">
+                  TOTAL ANNUAL COST OF POOR COMMUNICATION:
+                </div>
+                <div class="cost-value">
+                  $<span id="totalCostValue">0</span>
+                </div>
+              </div>
+
+              <p class="revenue-percentage">
+                This is equivalent to <span id="percentageValue">0</span>% of
+                your annual revenue
+              </p>
+
+              <div class="cost-visualization">
+                <h3>Cost Breakdown:</h3>
+                <div class="chart-container">
+                  <canvas id="costBreakdownChart"></canvas>
+                </div>
+                <div class="cost-breakdown">
+                  <div class="cost-item">
+                    <div class="cost-icon payment-icon">
+                      <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <div class="cost-details">
+                      <div class="cost-label">Payment Delays</div>
+                      <div class="cost-value">
+                        $<span id="paymentDelayCost">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cost-item">
+                    <div class="cost-icon dispute-icon">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="cost-details">
+                      <div class="cost-label">Dispute Resolution</div>
+                      <div class="cost-value">
+                        $<span id="disputeCost">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cost-item">
+                    <div class="cost-icon time-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="cost-details">
+                      <div class="cost-label">Time Waste</div>
+                      <div class="cost-value">
+                        $<span id="timeCost">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cost-item">
+                    <div class="cost-icon opportunity-icon">
+                      <i class="fas fa-handshake-slash"></i>
+                    </div>
+                    <div class="cost-details">
+                      <div class="cost-label">Lost Opportunities</div>
+                      <div class="cost-value">
+                        $<span id="opportunityCost">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cost-item">
+                    <div class="cost-icon stress-icon">
+                      <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="cost-details">
+                      <div class="cost-label">Hidden Stress Cost</div>
+                      <div class="cost-value">
+                        $<span id="stressCost">0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="comparison-metrics">
+                <h3>What This Means For Your Business:</h3>
+                <div class="metric-cards">
+                  <div class="metric-card">
+                    <div class="metric-icon">
+                      <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="metric-value">
+                      $<span id="dailyCost">0</span>
+                    </div>
+                    <div class="metric-label">Daily Cost</div>
+                  </div>
+
+                  <div class="metric-card">
+                    <div class="metric-icon">
+                      <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="metric-value">
+                      $<span id="projectCost">0</span>
+                    </div>
+                    <div class="metric-label">Per Project</div>
+                  </div>
+
+                  <div class="metric-card">
+                    <div class="metric-icon">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-value">
+                      $<span id="fiveYearCost">0</span>
+                    </div>
+                    <div class="metric-label">5-Year Cost</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="savings-projection">
+                <h3>Potential Annual Savings:</h3>
+                <div class="savings-visualization">
+                  <div class="savings-bar">
+                    <div class="current-cost">
+                      $<span id="currentCostDisplay">0</span>
+                    </div>
+                    <div class="savings-arrow">
+                      <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                    <div class="reduced-cost">
+                      $<span id="reducedCostDisplay">0</span>
+                    </div>
+                  </div>
+                  <div class="savings-label">
+                    With the Progress Pulse system, clients typically reduce
+                    these costs by 82%, potentially saving you $<span
+                      id="potentialSavings"
+                      >0</span
+                    >
+                    annually.
+                  </div>
+                </div>
+              </div>
+
+              <div class="disclaimer">
+                <p>
+                  Results are estimates based on industry averages and your
+                  inputs. Individual results may vary based on project
+                  complexity and client relationships.
+                </p>
+              </div>
+
+              <div class="cta-container">
+                <a href="#apply" class="cta-button pulse-animation"
+                  >APPLY FOR 1 OF 5 SPOTS NOW</a
+                >
+                <a href="#download" class="cta-secondary"
+                  >DOWNLOAD YOUR CUSTOM REPORT</a
+                >
+              </div>
+
+              <div class="navigation-buttons">
+                <button id="step3Back" class="back-button">
+                  <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button id="recalculateButton" class="recalculate-button">
+                  Recalculate
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <p>© 2025 Progress Pulse. All rights reserved.</p>
+      </footer>
     </div>
-    
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="js/calculator.js"></script>
+    <script src="js/report-generator.js"></script>
     <script src="js/ui-handlers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <script src="js/chart.js"></script>
-</body>
+  </body>
 </html>

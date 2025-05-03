@@ -725,8 +725,8 @@ button {
 }
 
 /* Cost item title hover effect */
-.cost-item:hover .cost-label {
-    color: var(--primary-dark);
+.cost-label {
+    color: white;
 }
 
 /* Adjust tooltip position */

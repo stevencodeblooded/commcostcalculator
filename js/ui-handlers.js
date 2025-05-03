@@ -319,8 +319,10 @@ document.addEventListener("DOMContentLoaded", function () {
       currentCostDisplay.textContent = formatNumber(results.totalCost);
       reducedCostDisplay.textContent = formatNumber(results.reducedCost);
 
-      // Update CTA button
-      ctaCost.textContent = formatNumber(results.totalCost);
+      // Add a null check before updating the CTA button text
+      if (ctaCost) {
+        ctaCost.textContent = formatNumber(results.totalCost);
+      }
     }, 1800);
 
     // Initialize the chart
@@ -401,33 +403,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Add notification when user submits form
-  document.querySelectorAll(".cta-button, .cta-secondary").forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
+  // Add notification when user clicks the Apply button
+  document.querySelector(".cta-button").addEventListener("click", function (e) {
+    e.preventDefault();
 
-      // Create notification element
-      const notification = document.createElement("div");
-      notification.className = "notification";
-      notification.innerHTML =
-        '<i class="fas fa-check-circle"></i> Thank you for your interest! We\'ll be in touch soon.';
+    // Create notification element
+    const notification = document.createElement("div");
+    notification.className = "notification";
+    notification.innerHTML =
+      '<i class="fas fa-check-circle"></i> Thank you for your interest! We\'ll be in touch soon.';
 
-      // Add notification to the page
-      document.body.appendChild(notification);
+    // Add notification to the page
+    document.body.appendChild(notification);
 
-      // Show notification with animation
+    // Show notification with animation
+    setTimeout(() => {
+      notification.classList.add("show");
+    }, 100);
+
+    // Remove notification after a delay
+    setTimeout(() => {
+      notification.classList.remove("show");
       setTimeout(() => {
-        notification.classList.add("show");
-      }, 100);
-
-      // Remove notification after a delay
-      setTimeout(() => {
-        notification.classList.remove("show");
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 500);
-      }, 3000);
-    });
+        document.body.removeChild(notification);
+      }, 500);
+    }, 3000);
   });
 
   // Check if there are saved results to restore
