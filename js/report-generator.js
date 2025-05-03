@@ -286,7 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.setFontSize(12);
       doc.setTextColor(255, 255, 255); // White
       doc.setFont(undefined, "bold");
-      doc.text("www.progresspulse.com/apply", 105, 114, { align: "center" });
+      doc.text("www.ByContractorsForContractors.com", 105, 114, {
+        align: "center",
+      });
       doc.setFont(undefined, "normal");
 
       // Add footer
@@ -354,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.setFontSize(12);
         doc.setTextColor(255, 255, 255); // White
         doc.setFont(undefined, "bold");
-        doc.text("www.progresspulse.com/apply", 105, finalY4 + 34, {
+        doc.text("www.ByContractorsForContractors.com", 105, finalY4 + 34, {
           align: "center",
         });
         doc.setFont(undefined, "normal");

@@ -403,31 +403,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Add notification when user clicks the Apply button
+  // Add notification and redirect when user clicks the Apply button
   document.querySelector(".cta-button").addEventListener("click", function (e) {
-    e.preventDefault();
+    // Don't prevent default here to allow the natural link navigation
 
     // Create notification element
     const notification = document.createElement("div");
     notification.className = "notification";
     notification.innerHTML =
-      '<i class="fas fa-check-circle"></i> Thank you for your interest! We\'ll be in touch soon.';
+      '<i class="fas fa-check-circle"></i> Redirecting you to our application page...';
 
-    // Add notification to the page
-    document.body.appendChild(notification);
-
-    // Show notification with animation
-    setTimeout(() => {
-      notification.classList.add("show");
-    }, 100);
-
-    // Remove notification after a delay
-    setTimeout(() => {
-      notification.classList.remove("show");
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 500);
-    }, 3000);
   });
 
   // Check if there are saved results to restore
