@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
     doc.setProperties({
       title: "Communication Cost Report",
       subject: "Contractor Communication Cost Analysis",
-      author: "Progress Pulse",
+      author: "Contractor Trust Building System",
       keywords: "contractor, communication, cost, analysis",
-      creator: "Progress Pulse Calculator",
+      creator: "Contractor Trust Building System Calculator",
     });
 
     // Add header
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.setFontSize(12);
       doc.setTextColor(255, 255, 255); // White
       doc.text(
-        "With the Progress Pulse system, clients typically reduce these costs by 82%",
+        "With the Contractor Trust Building System, clients typically reduce these costs by 82%",
         105,
         38,
         { align: "center" }
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.setFontSize(10);
       doc.setTextColor(71, 85, 105); // Medium-dark color
       doc.text(
-        "To learn how Progress Pulse can help you reduce communication costs and improve",
+        "To learn how Contractor Trust Building System can help you reduce communication costs and improve",
         20,
         85
       );
@@ -300,9 +300,14 @@ document.addEventListener("DOMContentLoaded", function () {
         280,
         { align: "center" }
       );
-      doc.text("© 2025 Progress Pulse. All rights reserved.", 105, 285, {
-        align: "center",
-      });
+      doc.text(
+        "© 2025 Contractor Trust Building System. All rights reserved.",
+        105,
+        285,
+        {
+          align: "center",
+        }
+      );
     } else {
       // Create savings highlight box
       doc.setFillColor(22, 163, 74); // Secondary color (green)
@@ -312,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.setFontSize(12);
       doc.setTextColor(255, 255, 255); // White
       doc.text(
-        "With the Progress Pulse system, clients typically reduce these costs by 82%",
+        "With the Contractor Trust Building System, clients typically reduce these costs by 82%",
         105,
         finalY3 + 13,
         { align: "center" }
@@ -337,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
       doc.setFontSize(10);
       doc.setTextColor(71, 85, 105); // Medium-dark color
       doc.text(
-        "To learn how Progress Pulse can help you reduce communication costs and improve",
+        "To learn how Contractor Trust Building System can help you reduce communication costs and improve",
         20,
         finalY4 + 10
       );
@@ -371,9 +376,14 @@ document.addEventListener("DOMContentLoaded", function () {
         280,
         { align: "center" }
       );
-      doc.text("© 2025 Progress Pulse. All rights reserved.", 105, 285, {
-        align: "center",
-      });
+      doc.text(
+        "© 2025 Contractor Trust Building System. All rights reserved.",
+        105,
+        285,
+        {
+          align: "center",
+        }
+      );
     }
 
     // Save the PDF

@@ -11,7 +11,7 @@ A professional, interactive calculator that helps contractors estimate how much 
 - **Responsive design** for all device sizes
 - **Professional animations** for enhanced user experience
 - **Data persistence** with local storage
-- **Clear call-to-action** for the Progress Pulse system
+- **Clear call-to-action** for the Contractor Trust Building System
 
 ## Project Structure
 
@@ -64,7 +64,7 @@ The calculator uses the following formulas to estimate costs:
 3. Enter your current process details in Step 2
 4. Click "Calculate My Costs" to see your results
 5. Explore the breakdown and potential savings
-6. Click the call-to-action button to apply for the Progress Pulse system
+6. Click the call-to-action button to apply for the Contractor Trust Building System
 
 ## Customization
 
@@ -90,8 +90,8 @@ The calculator can be easily customized:
 
 ## License
 
-© 2025 Progress Pulse. All rights reserved.
+© 2025 Contractor Trust Building System. All rights reserved.
 
 ---
 
-Created by otieno_develops for Progress Pulse
+Created by otieno_develops.
